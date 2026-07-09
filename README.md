@@ -24,3 +24,4 @@
 ```bash
 git clone [https://github.com/Marleen-pixel/Smart-task-manger.git](https://github.com/Marleen-pixel/Smart-task-manger.git)
 cd Smart-task-manger
+[Smart Task Manager Logo](logo.png)
