@@ -4,7 +4,7 @@
   # Smart Task Manager 🎯
   *Your All-in-One Productivity Solution*
   
-  **Built with passion by Mahin Afnan**
+  **Built with passion by Maheen afan**
 </div>
 
 ---
