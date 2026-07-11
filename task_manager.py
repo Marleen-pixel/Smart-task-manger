@@ -7,7 +7,6 @@ st.set_page_config(page_title="Smart Task Manager", layout="wide")
 st.title("✅ Smart Task Manager")
 
 # --- 2. Database Setup (SQLite) ---
-# कनेक्शन को कैश करना ताकि हर बार नया कनेक्शन न खुले
 @st.cache_resource
 def get_connection():
     conn = sqlite3.connect('tasks.db', check_same_thread=False)
@@ -56,7 +55,6 @@ elif menu == "View Tasks":
     else:
         completed_count = 0
         for t in tasks:
-            # t[0]=id, t[1]=task, t[2]=category, t[3]=priority, t[4]=status
             col1, col2, col3 = st.columns([3, 1, 1])
             
             if t[4] == "Completed":
@@ -65,14 +63,12 @@ elif menu == "View Tasks":
             else:
                 col1.write(f"⭕ {t[1]} ({t[2]}) - Priority: {t[3]}")
             
-            # Toggle button
             if col2.button("Toggle", key=f"toggle_{t[0]}"):
                 new_status = "Pending" if t[4] == "Completed" else "Completed"
                 c.execute("UPDATE tasks SET status = ? WHERE id = ?", (new_status, t[0]))
                 conn.commit()
                 st.rerun()
             
-            # Delete button
             if col3.button("Delete", key=f"del_{t[0]}"):
                 c.execute("DELETE FROM tasks WHERE id = ?", (t[0],))
                 conn.commit()
